@@ -13,6 +13,10 @@ example::
   -P external_network_id=4bddd327-c05a-4d6a-9c04-e9416ba26e2f \
   -P network=<internal network>
 
+^^^^^^^^^^^^
+Auto scaling
+^^^^^^^^^^^^
+
 Here we measure avg cpu utilization in this stack for auto scaling criteria::
 
   cpu_alarm_high:
@@ -32,3 +36,21 @@ Here we measure avg cpu utilization in this stack for auto scaling criteria::
 The meter_name can be cpu usage or network bandwidht...etc. More meters can be found here::
 
 http://docs.openstack.org/admin-guide-cloud/content/section_telemetry-compute-meters.html
+
+^^^^^^^^^^^^^
+Load balancer
+^^^^^^^^^^^^^
+
+Session persistence can be defined in heat template. more resource can be found here
+http://docs.openstack.org/developer/heat/template_guide/openstack.html
+ex::
+
+  OS::Neutron::Pool
+  ...
+    vip : Map
+    ...
+    session_persistence : Map
+    type : String
+      Allowed values: SOURCE_IP, HTTP_COOKIE, APP_COOKIE
+  
+  
