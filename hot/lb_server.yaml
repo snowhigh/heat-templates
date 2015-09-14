@@ -23,12 +23,20 @@ parameters:
     description: Network used by the server
 
 resources:
+  system_volume:
+    type: OS::Cinder::Volume
+    properties:
+      size: 5
+      image: {get_param: image}
   server:
     type: OS::Nova::Server
     properties:
       flavor: {get_param: flavor}
-      image: {get_param: image}
       key_name: {get_param: key_name}
+      availability_zone: "nova"
+      block_device_mapping:
+        - device_name: vda
+          volume_id: {get_resource: system_volume}
       metadata: {get_param: metadata}
       user_data: {get_param: user_data}
       user_data_format: RAW
