@@ -3,7 +3,7 @@ description: AutoScaling Apache
 parameters:
   image:
     type: string
-    default: 'apache-php'
+    default: 'demo_captive'
     description: Image used for servers
   key:
     type: string
