@@ -4,14 +4,12 @@ hot/autoscaling.yaml
 
 example::
 
-  heat stack-create AutoscalingWordpress -f autoscaling.yaml -P image=centosq \
-  -P key=simon -P flavor=m1.small \
-  -P database_flavor=m1.small \
-  -P subnet_id=<internal network subnet> \
-  -P database_name=wordpress \
-  -P database_user=wordpress \
-  -P external_network_id=4bddd327-c05a-4d6a-9c04-e9416ba26e2f \
-  -P network=<internal network>
+  neutron net-list
+
+  heat stack-create auto_cpu -f autoscaling_cpu.yaml -P image=TestVM -P key=simon \
+  -P external_network_id=91cc5b54-6dba-44b7-b6fe-0813234fa622 \
+  -P network=9a0ededa-ddcd-41e7-9e50-0be1b3743406 \
+  -P subnet_id=1df0af6a-ae49-40ac-ba72-c58c5fa470ea
 
 ^^^^^^^^^^^^
 Auto scaling
